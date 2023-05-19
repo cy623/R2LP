@@ -237,20 +237,20 @@ def add_noise(pre_noise, labels, idx_clean, idx_unknown, noise_type):
         for i in range(num_classes):
             c[i][np.random.choice(row_indices[row_indices != i])] = pre_noise
 
-    y_unkonwn = labels[idx_unknown].clone() # 训练集的label
+    y_unkonwn = labels[idx_unknown].clone() # the labels of training set
 
-    for i in range(len(idx_unknown)):   # 加噪
+    for i in range(len(idx_unknown)):   # add noise
         y_unkonwn[i] = np.random.choice(num_classes, p=c[y_unkonwn[i]])
     new_labels = labels.clone()
-    new_labels[idx_unknown] = y_unkonwn  # 加噪完成的labels
+    new_labels[idx_unknown] = y_unkonwn  # the noisy labels
 
     c = (new_labels.max() + 1)  # class numbers
-    n = new_labels.shape[0]  # 全部 node numbers
+    n = new_labels.shape[0]  #  node numbers
     y_clean = torch.zeros((n, c))
     y_unknown = torch.zeros((n, c))
     
-    y_clean[idx_clean] = F.one_hot(new_labels[idx_clean], c).double().squeeze(1) # 干净label 构成的初始标签矩阵
-    y_unknown[idx_unknown] = F.one_hot(new_labels[idx_unknown], c).double().squeeze(1)  # 带部分噪音的label构成的初始标签矩阵
+    y_clean[idx_clean] = F.one_hot(new_labels[idx_clean], c).double().squeeze(1) # the matrix of clean labels
+    y_unknown[idx_unknown] = F.one_hot(new_labels[idx_unknown], c).double().squeeze(1)  # the matrix of noisy labels
 
     return new_labels, y_clean, y_unknown
 
