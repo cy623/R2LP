@@ -1,4 +1,4 @@
-# RoGNN
+# R2LP
 This is the official repository of paper "Resurrecting Label Propagation for Graphs against Arbitrary
 Heterophily and Label Noise".
 
@@ -23,11 +23,11 @@ Repository structure
 
 Run pipeline
 --------
-1. You can run RoGNN by the script:
+1. You can run R2LP by the script:
 ```
-python RoGNN/train.py --dataset cora
+python R2LP/train.py --dataset cora
 ```
 2. For more experiments running details, you can ref the running .sh by the script:
 ```
-sh RoGNN/run.sh
+sh R2LP/run.sh
 ```
