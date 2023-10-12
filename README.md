@@ -1,5 +1,6 @@
 # RoGNN
-This is the official repository of paper "Robust Graph Learning against Arbitrary Heterophily and Label Noise".
+This is the official repository of paper "Resurrecting Label Propagation for Graphs against Arbitrary
+Heterophily and Label Noise".
 
 Setup
 -------
